@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-27c#(t9h1a)-_k!z!jgy9j81do+12=w@7shc)pa&nn-tm5s&u_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,7 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'portfollio.urls'
 
@@ -134,4 +136,10 @@ EMAIL_HOST_USER = 'yadavvikas7376@gmail.com'
 EMAIL_HOST_PASSWORD = 'nugc nqna jaoy sxyc'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CONTACT_RECEIVER_EMAIL = 'yaduvanshivikas81@gmail.com'
+
+import os
+
+# STATIC FILES CONFIGURATION
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # required for collectstatic
 
